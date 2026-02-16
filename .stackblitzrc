@@ -1,0 +1,4 @@
+{
+  "installDependencies": true,
+  "startCommand": "cd bff && npm run dev & cd frontend && npm run dev"
+}
