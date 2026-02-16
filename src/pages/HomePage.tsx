@@ -2,67 +2,92 @@ export default function HomePage() {
   return (
     <div className="page">
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <h1>User Dashboard - Coding Test</h1>
-        <p style={{ fontSize: '1rem', color: '#666', marginBottom: '2rem' }}>
-          Build a user dashboard that fetches and displays data from <code>https://jsonplaceholder.typicode.com/users</code>
-        </p>
+        <h1>Recipe Finder</h1>
 
         <div className="test-section">
-          <h2>🎯 Tasks</h2>
+          <h2>📋 Tasks</h2>
           
           <div className="task-card">
-            <h3>1. Implement Custom Hooks</h3>
+            <h3>Task 1: Custom Hooks</h3>
             <ul>
-              <li><code>useUsers.ts</code> - Fetch all users, return <code>{`{ users, loading, error }`}</code></li>
-              <li><code>useUser.ts</code> - Fetch user by ID, re-fetch when ID changes</li>
+              <li><strong>useMeals.ts</strong> - Fetch meals by search query</li>
+              <li><strong>useMeal.ts</strong> - Fetch single meal by ID</li>
             </ul>
           </div>
 
           <div className="task-card">
-            <h3>2. Complete Pages</h3>
+            <h3>Task 2: Pages</h3>
             <ul>
-              <li><code>UsersPage.tsx</code> - Display users list with navigation links</li>
-              <li><code>UserDetailsPage.tsx</code> - Display user details with back link</li>
+              <li><strong>MealsPage.tsx</strong> - Search form + display meals grid</li>
+              <li><strong>MealDetailsPage.tsx</strong> - Show recipe with ingredients & instructions</li>
             </ul>
           </div>
 
           <div className="task-card">
-            <h3>3. Write Tests</h3>
+            <h3>Task 3: Tests</h3>
             <ul>
-              <li>Complete <code>UsersPage.test.tsx</code> - Mock fetch, test loading/error/success states</li>
+              <li><strong>MealsPage.test.tsx</strong> - Complete test cases (loading, success, error, links)</li>
             </ul>
           </div>
         </div>
 
         <div className="test-section">
-          <h2>📁 What to Implement</h2>
-          <pre style={{ 
+          <h2>🌐 API Endpoints</h2>
+          <div style={{ 
             backgroundColor: '#f5f5f5', 
+            padding: '1rem', 
+            borderRadius: '4px',
+            fontFamily: 'monospace',
+            fontSize: '0.9rem'
+          }}>
+            <p><strong>Search meals:</strong></p>
+            <code style={{ display: 'block', marginBottom: '1rem' }}>
+              https://www.themealdb.com/api/json/v1/1/search.php?s=chicken
+            </code>
+            
+            <p><strong>Get meal by ID:</strong></p>
+            <code style={{ display: 'block' }}>
+              https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772
+            </code>
+          </div>
+          
+          <p style={{ marginTop: '1rem', fontSize: '0.9rem', color: '#666' }}>
+            💡 The API returns <code>{`{ meals: [...] }`}</code> or <code>{`{ meals: null }`}</code> if no results
+          </p>
+        </div>
+
+        <div className="test-section">
+          <h2>📁 Files to Complete</h2>
+          <pre style={{ 
+            backgroundColor: '#fff3cd', 
             padding: '1rem', 
             borderRadius: '4px', 
             overflow: 'auto',
-            fontSize: '0.9rem'
+            fontSize: '0.9rem',
+            border: '1px solid #ffc107'
           }}>
 {`src/hooks/
-  useUsers.ts            ⚠️  TODO
-  useUser.ts             ⚠️  TODO
+  ⚠️ useMeals.ts
+  ⚠️ useMeal.ts
+  
 src/pages/
-  UsersPage.tsx          ⚠️  TODO
-  UserDetailsPage.tsx    ⚠️  TODO
+  ⚠️ MealsPage.tsx
+  ⚠️ MealDetailsPage.tsx
+  
 src/__tests__/
-  UsersPage.test.tsx     ⚠️  TODO`}
+  ⚠️ MealsPage.test.tsx`}
           </pre>
         </div>
 
         <div style={{ 
           marginTop: '2rem', 
           padding: '1rem', 
-          backgroundColor: '#e8f4f8', 
-          borderLeft: '4px solid #0066cc',
+          backgroundColor: '#d4edda', 
+          borderLeft: '4px solid #28a745',
           borderRadius: '4px'
         }}>
-          <p style={{ margin: 0, fontWeight: 500 }}>
-            💡 Start with the hooks in <code>src/hooks/</code> - check the TODO comments for guidance
+          <p style={{ margin: 0 }}>
+            ✅ <strong>Getting Started:</strong> Open <code>src/hooks/useMeals.ts</code> and follow the TODO comments
           </p>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
-import UsersPage from './pages/UsersPage'
-import UserDetailsPage from './pages/UserDetailsPage'
+import MealsPage from './pages/MealsPage'
+import MealDetailsPage from './pages/MealDetailsPage'
 import './App.css'
 
 /**
@@ -9,8 +9,8 @@ import './App.css'
  * 
  * Routes:
  * 1. "/" - Shows test instructions
- * 2. "/users" - Shows users list (to be implemented)
- * 3. "/users/:id" - Shows user details (to be implemented)
+ * 2. "/meals" - Shows meals search and list (to be implemented)
+ * 3. "/meals/:id" - Shows meal recipe details (to be implemented)
  */
 export default function App() {
   return (
@@ -18,10 +18,11 @@ export default function App() {
       <div className="app">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/users" element={<UsersPage />} />
-          <Route path="/users/:id" element={<UserDetailsPage />} />
+          <Route path="/meals" element={<MealsPage />} />
+          <Route path="/meals/:id" element={<MealDetailsPage />} />
         </Routes>
       </div>
     </BrowserRouter>
   )
 }
+

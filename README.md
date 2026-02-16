@@ -1,40 +1,72 @@
-# User Dashboard - Coding Test
+# Recipe Finder - React Test
 
-Build a user dashboard that fetches and displays data from `https://jsonplaceholder.typicode.com/users`
+Build a recipe finder app using React, TypeScript, and custom hooks.
 
-## Getting Started
+## Setup
 
 ```bash
 npm install
-npm run dev        # Visit http://localhost:5173
+npm run dev        # Start dev server at http://localhost:5173
 npm run test       # Run tests
 ```
 
+## API
+
+**TheMealDB API** (free, no key required)
+
+- **Search:** `https://www.themealdb.com/api/json/v1/1/search.php?s=chicken`
+- **Get by ID:** `https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772`
+- **Response:** `{ meals: [...] }` or `{ meals: null }` if no results
+
 ## Tasks
 
-### 1. Implement Custom Hooks
-- **`src/hooks/useUsers.ts`** - Fetch all users, return `{ users, loading, error }`
-- **`src/hooks/useUser.ts`** - Fetch user by ID, re-fetch when ID changes
+### Task 1: Custom Hooks
 
-### 2. Complete Pages
-- **`src/pages/UsersPage.tsx`** - Display users list with navigation links
-- **`src/pages/UserDetailsPage.tsx`** - Display user details with back link
+**`src/hooks/useMeals.ts`**
+- Fetch meals by search query
+- Return `{ meals, loading, error }`
+- Handle null response (no results)
 
-### 3. Write Tests
-- **`src/__tests__/UsersPage.test.tsx`** - Mock fetch, test loading/error/success states
+**`src/hooks/useMeal.ts`**
+- Fetch single meal by ID
+- Return `{ meal, loading, error }`
+- Re-fetch when ID changes
 
-## What to Implement
+### Task 2: Pages
+
+**`src/pages/MealsPage.tsx`**
+- Search form (controlled input)
+- Display meals grid with: image, name, category, area
+- Link each meal to `/meals/:id`
+- Handle empty results
+
+**`src/pages/MealDetailsPage.tsx`**
+- Show meal: image, name, category, area, instructions
+- Extract & display ingredients (from strIngredient1-20, strMeasure1-20)
+- Add "Back to Meals" link
+
+### Task 3: Tests
+
+**`src/__tests__/MealsPage.test.tsx`**
+- Test loading state
+- Test successful fetch & display
+- Test error handling
+- Test clickable links
+
+## Files to Complete
 
 ```
 src/hooks/
-  useUsers.ts            ⚠️  TODO
-  useUser.ts             ⚠️  TODO
+  ⚠️ useMeals.ts
+  ⚠️ useMeal.ts
+
 src/pages/
-  UsersPage.tsx          ⚠️  TODO
-  UserDetailsPage.tsx    ⚠️  TODO
+  ⚠️ MealsPage.tsx
+  ⚠️ MealDetailsPage.tsx
+
 src/__tests__/
-  UsersPage.test.tsx     ⚠️  TODO
+  ⚠️ MealsPage.test.tsx
 ```
 
-**Tip:** Check the TODO comments in each file for guidance.
+**Start here:** Open `src/hooks/useMeals.ts` and follow the TODO comments.
 
