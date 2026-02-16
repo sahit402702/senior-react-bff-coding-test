@@ -1,125 +1,99 @@
-# Senior React BFF Coding Test
+# Senior React Coding Test
 
-A comprehensive React coding test designed for senior frontend developers. This project is optimized for sharing on StackBlitz and includes multiple tasks covering essential React concepts.
+A focused **30–40 minute** coding test for senior React / TypeScript developers.
+
+**Tests:** `useMemo` / `useEffect` rendering, custom hooks, React Router, TypeScript, Vitest
+
+---
 
 ## 🚀 Quick Start
 
-### Running Locally
-
-1. Install dependencies:
 ```bash
 npm install
+npm run dev          # start dev server
+npm run test         # run tests once
+npm run test:watch   # run tests in watch mode
 ```
 
-2. Start the development server:
-```bash
-npm run dev
-```
+### Deploy to StackBlitz
 
-3. Open your browser to the URL shown in the terminal (usually `http://localhost:5173`)
+1. Go to [stackblitz.com](https://stackblitz.com)
+2. Click **"Upload Project"** or drag/drop this folder
+3. Share the generated URL with candidates
 
-### Running on StackBlitz
+---
 
-**Option 1: Direct Import**
-1. Go to [StackBlitz](https://stackblitz.com/)
-2. Click "Import from GitHub"
-3. Enter this repository URL: `sahit402702/senior-react-bff-coding-test`
-4. StackBlitz will automatically set up and run the project
+## 📝 Overview
 
-**Option 2: Share a Direct Link**
-You can share this direct link: `https://stackblitz.com/github/sahit402702/senior-react-bff-coding-test`
+All tasks are visible on the **home page** (`/`) when you run the app.
 
-**Option 3: Fork on StackBlitz**
-1. Open the project on StackBlitz using the link above
-2. Click "Fork" to create an editable copy
-3. Share your fork URL with candidates
+| Task | Focus | Time |
+|------|-------|------|
+| **1** | Fix `useMemo` / `React.memo` / `useEffect` bugs | ~10 min |
+| **2** | Implement `useFetch` & `useDebounce` custom hooks | ~15 min |
+| **3** | Fix & complete Vitest test cases | ~10 min |
 
-## 📝 Test Overview
+---
 
-This coding test evaluates candidates on:
+## 🎯 Task Details
 
-- **React Hooks**: useState, useEffect, custom hooks
-- **Component Architecture**: Building reusable components
-- **State Management**: Managing and updating component state
-- **Data Fetching**: API calls and handling async operations
-- **Event Handling**: User interactions and form handling
-- **Conditional Rendering**: Loading states, error handling
-- **Best Practices**: Code organization and React patterns
+### Task 1 — Fix Performance & Rendering Bugs
 
-## 🎯 Tasks
+**File:** `src/components/ProductList.tsx`
 
-### Task 1: Counter Component
-Complete the basic counter with increment, decrement, and reset functionality.
+Fix 3 intentional bugs:
+1. Filtered products re-compute on every render → wrap with `useMemo`
+2. `ProductCard` re-renders unnecessarily → wrap with `React.memo`
+3. `useEffect` fires on every render → fix dependency array
 
-**Skills tested**: useState, event handling, conditional logic
+**Success:** Render counts on cards stay low when typing in search.
 
-### Task 2: Todo List Component
-Build a fully functional todo list with add, toggle, delete, and filter features.
+---
 
-**Skills tested**: Array state management, filtering, event handling
+### Task 2 — Custom Hooks & Routing
 
-### Task 3: User Profile Component
-Fetch and display user data from an external API with proper loading and error states.
+**File:** `src/hooks/useFetch.ts`
 
-**Skills tested**: useEffect, data fetching, error handling, conditional rendering
+Implement:
+- **`useFetch<T>(url)`** — Generic fetch hook with cleanup
+- **`useDebounce<T>(value, delay)`** — Debounce hook
 
-### Bonus Task: Custom Hook
-Create a `useLocalStorage` custom hook for persisting state.
+**Success:** Navigate to `/users` — the page loads user data and routing works.
 
-**Skills tested**: Custom hooks, localStorage API, state persistence
+---
 
-## ⏱️ Time Estimate
+### Task 3 — Test Cases
 
-- **Expected completion time**: 45-60 minutes
-- **Recommended approach**: Complete tasks in order
-- **Evaluation criteria**: Code quality, functionality, and React best practices
+**Files:** `src/__tests__/*.test.ts(x)`
 
-## 🔧 Project Structure
+Fix/complete tests:
+- Mock `fetch` in `useFetch.test.ts`
+- Add cleanup test in `useDebounce.test.ts`
+- Complete routing assertions in `App.test.tsx`
+
+**Success:** `npm run test` passes all tests.
+
+---
+
+## 🏗 Project Structure
 
 ```
-senior-react-bff-coding-test/
-├── index.html
-├── package.json
-├── vite.config.js
-└── src/
-    ├── main.jsx
-    ├── App.jsx
-    ├── App.css
-    ├── index.css
-    └── components/
-        ├── Counter.jsx
-        ├── TodoList.jsx
-        └── UserProfile.jsx
+src/
+  components/ProductList.tsx    ← Task 1
+  hooks/useFetch.ts             ← Task 2
+  __tests__/                    ← Task 3
+  pages/
+    HomePage.tsx                (shows all tasks)
+    UsersPage.tsx               (tests Task 2)
+    UserDetailPage.tsx          (tests routing)
 ```
 
-## 📦 Tech Stack
+---
 
-- **React 18**: Latest React with hooks
-- **Vite**: Fast build tool and dev server
-- **CSS**: Styled with modern CSS (light/dark mode support)
+## 📋 Evaluation
 
-## 💡 For Evaluators
-
-### Reviewing Submissions
-
-1. Check if all tasks are completed
-2. Evaluate code quality and React patterns
-3. Test functionality in the browser
-4. Look for bonus implementations (custom hooks, additional features)
-
-### What to Look For
-
-- ✅ Proper use of React hooks
-- ✅ Clean, readable code
-- ✅ Correct state management
-- ✅ Error handling and edge cases
-- ✅ Good component structure
-- ✅ Following React best practices
-
-## 🤝 Contributing
-
-This is a coding test template. Feel free to fork and customize for your needs.
-
-## 📄 License
-
-MIT License - feel free to use this for your hiring process.
+- ✅ Correct use of `useMemo`, `React.memo`, `useEffect` deps
+- ✅ Custom hooks with proper cleanup & TypeScript generics
+- ✅ React Router usage (`useParams`, `<Link>`)
+- ✅ Test mocking, async assertions, edge cases
+- ✅ Clean, idiomatic React/TypeScript code
