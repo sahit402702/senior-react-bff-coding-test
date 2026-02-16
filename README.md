@@ -18,9 +18,11 @@ Build a **User Dashboard** application that fetches and displays user data from 
 
 ```bash
 npm install
-npm run dev        # Start development server
+npm run dev        # Start development server - visit http://localhost:5173
 npm run test       # Run tests
 ```
+
+**The complete test instructions are displayed on the home page (`/`) when you run the app.**
 
 ---
 
