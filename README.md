@@ -1,101 +1,144 @@
-# Senior React Coding Test
+# Senior React Developer Coding Test
 
-A focused **30–40 minute** coding test for senior React / TypeScript developers.
-
-**Tests:** `useMemo` / `useEffect` rendering, custom hooks, React Router, TypeScript, Vitest
+**Time Limit:** 40 minutes  
+**Stack:** React 18 + TypeScript + React Router v6 + Vitest
 
 ---
 
-## 🚀 Quick Start
+## 📋 Overview
+
+Build a **User Dashboard** application that fetches and displays user data from an API.
+
+**API Endpoint:**  
+`https://jsonplaceholder.typicode.com/users`
+
+---
+
+## 🚀 Getting Started
 
 ```bash
 npm install
-npm run dev          # start dev server
-npm run test         # run tests once
-npm run test:watch   # run tests in watch mode
+npm run dev        # Start development server
+npm run test       # Run tests
 ```
 
-### Deploy to StackBlitz
+---
 
-1. Go to [stackblitz.com](https://stackblitz.com)
-2. Click **"Upload Project"** or drag/drop this folder
-3. Share the generated URL with candidates
+## 🎯 Requirements
+
+### 1. Custom Hooks (15 min)
+
+Implement two custom hooks in the `hooks/` folder:
+
+#### **`useUsers.ts`**
+- Fetch all users from `https://jsonplaceholder.typicode.com/users`
+- Return `{ users, loading, error }`
+- Use `useState` and `useEffect`
+
+#### **`useUser.ts`**
+- Fetch a single user by ID from `https://jsonplaceholder.typicode.com/users/:id`
+- Return `{ user, loading, error }`
+- Re-fetch when ID changes
 
 ---
 
-## 📝 Overview
+### 2. Pages (15 min)
 
-All tasks are visible on the **home page** (`/`) when you run the app.
+Complete the TODO items in:
 
-| Task | Focus | Time |
-|------|-------|------|
-| **1** | Fix `useMemo` / `React.memo` / `useEffect` / `useCallback` bugs (5 bugs) | ~15 min |
-| **2** | Complete `useFetch` & `useDebounce` custom hooks (fill TODOs) | ~12 min |
-| **3** | Fix & complete Vitest test cases | ~13 min |
+#### **`UsersPage.tsx`**
+- Use the `useUsers` hook
+- Show `<Loader />` while loading
+- Show `<ErrorMessage />` if error
+- Display list of users
+- Each user name should be a `<Link>` to `/users/:id`
 
----
-
-## 🎯 Task Details
-
-### Task 1 — Fix Performance & Rendering Bugs
-
-**File:** `src/components/ProductList.tsx`
-
-Fix 5 intentional bugs:
-1. Filtered products re-compute on every render → wrap with `useMemo`
-2. `ProductCard` re-renders unnecessarily → wrap with `React.memo`
-3. `useEffect` fires on every render → fix dependency array
-4. `handleSort` function recreated on every render → use `useCallback`
-5. Expensive price calculation runs in child component → memoize in parent
-
-**Success:** Render counts stay low, console logs minimize when typing.
+#### **`UserDetailsPage.tsx`**
+- Use `useParams` to get the user ID from URL
+- Use the `useUser` hook
+- Show `<Loader />` while loading
+- Show `<ErrorMessage />` if error
+- Display user details: name, email, phone, website, company name
+- Include a "Back to Users" link
 
 ---
 
-### Task 2 — Custom Hooks & Routing
+### 3. Testing (10 min)
 
-**File:** `src/hooks/useFetch.ts`
+Complete the tests in `__tests__/UsersPage.test.tsx`:
 
-Complete the custom hooks by filling in the TODO comments:
-- **`useFetch<T>(url)`** — Fill in 4 TODOs to implement fetch with AbortController cleanup
-- **`useDebounce<T>(value, delay)`** — Fill in 4 TODOs to implement debouncing
-
-**Success:** Navigate to `/users` — the page loads user data and routing works.
-
----
-
-### Task 3 — Test Cases
-
-**Files:** `src/__tests__/*.test.ts(x)`
-
-Fix/complete tests:
-- Mock `fetch` in `useFetch.test.ts`
-- Add cleanup test in `useDebounce.test.ts`
-- Complete routing assertions in `App.test.tsx`
-
-**Success:** `npm run test` passes all tests.
+- Mock the `fetch` API
+- Test loading state
+- Test successful user list display
+- Test error handling
+- Test navigation links
 
 ---
 
-## 🏗 Project Structure
+## 📁 Project Structure
 
 ```
 src/
-  components/ProductList.tsx    ← Task 1
-  hooks/useFetch.ts             ← Task 2
-  __tests__/                    ← Task 3
+  App.tsx                  ✅ Already configured
+  main.tsx                 ✅ Entry point
+  types/
+    User.ts                ✅ TypeScript types defined
+  hooks/
+    useUsers.ts            ⚠️  TODO: Implement
+    useUser.ts             ⚠️  TODO: Implement
   pages/
-    HomePage.tsx                (shows all tasks)
-    UsersPage.tsx               (tests Task 2)
-    UserDetailPage.tsx          (tests routing)
+    UsersPage.tsx          ⚠️  TODO: Complete
+    UserDetailsPage.tsx    ⚠️  TODO: Complete
+  components/
+    Loader.tsx             ✅ Ready to use
+    ErrorMessage.tsx       ✅ Ready to use
+  __tests__/
+    UsersPage.test.tsx     ⚠️  TODO: Complete
 ```
 
 ---
 
-## 📋 Evaluation
+## ✅ Evaluation Criteria
 
-- ✅ Correct use of `useMemo`, `React.memo`, `useEffect` deps
-- ✅ Custom hooks with proper cleanup & TypeScript generics
-- ✅ React Router usage (`useParams`, `<Link>`)
-- ✅ Test mocking, async assertions, edge cases
-- ✅ Clean, idiomatic React/TypeScript code
+| Category | Points | What We're Looking For |
+|----------|--------|------------------------|
+| **Custom Hooks** | 35% | Correct use of useState, useEffect, proper TypeScript types, error handling |
+| **React Router** | 20% | useParams usage, navigation, proper routing |
+| **TypeScript** | 20% | Type safety, no `any`, proper interfaces |
+| **Testing** | 15% | Mocking, async testing, assertions |
+| **Code Quality** | 10% | Clean code, readable, follows React best practices |
+
+---
+
+## 📝 Submission Checklist
+
+Before submitting, verify:
+
+- [ ] `npm run dev` works without errors
+- [ ] All users display on `/users` page
+- [ ] Clicking a user navigates to `/users/:id`
+- [ ] User details page shows all required information
+- [ ] Loading states work correctly
+- [ ] Error states are handled
+- [ ] Tests run with `npm run test`
+- [ ] TypeScript compiles without errors (`npx tsc --noEmit`)
+
+---
+
+## 🔍 Tips
+
+- Start with the hooks - they're the foundation
+- Test your hooks manually before wiring them to components
+- Use browser console to debug API calls
+- Don't worry about styling - focus on functionality
+- Use TypeScript to catch errors early
+
+---
+
+## ⏱️ Time Management
+
+- **0-15 min:** Implement `useUsers` and `useUser` hooks
+- **15-30 min:** Complete `UsersPage` and `UserDetailsPage`
+- **30-40 min:** Complete tests and verify everything works
+
+Good luck! 🚀
