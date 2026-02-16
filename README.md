@@ -1,198 +1,125 @@
-# Senior React + BFF Coding Test
+# Senior React BFF Coding Test
 
-A timed coding assessment (40 minutes) for Senior Front-End / BFF Engineers evaluating proficiency in React, TypeScript, BFF patterns, API orchestration, and testing.
+A comprehensive React coding test designed for senior frontend developers. This project is optimized for sharing on StackBlitz and includes multiple tasks covering essential React concepts.
 
-## 🏗️ Project Architecture
+## 🚀 Quick Start
 
-```
-├── frontend/          # React + TypeScript + Vite
-│   ├── src/
-│   │   ├── components/    # Reusable UI components (Fluent UI)
-│   │   ├── pages/         # Route-level page components
-│   │   ├── services/      # API client & GraphQL queries
-│   │   ├── types/         # TypeScript type definitions
-│   │   └── __tests__/     # Component & integration tests
-│   └── vitest.config.ts
-├── bff/               # Backend-for-Frontend (Express + Apollo GraphQL)
-│   ├── src/
-│   │   ├── graphql/       # Schema & resolvers
-│   │   ├── rest/          # REST API routes
-│   │   ├── services/      # Data service & aggregation logic
-│   │   ├── validation/    # JSON schema validation (Ajv)
-│   │   ├── types/         # TypeScript type definitions
-│   │   └── __tests__/     # API & unit tests
-│   └── vitest.config.ts
-└── README.md
-```
+### Running Locally
 
-## 🛠️ Tech Stack
-
-### Frontend
-- **React 19** with TypeScript
-- **Vite** for build tooling
-- **Microsoft Fluent UI** (`@fluentui/react-components`) for UI consistency with Microsoft ecosystem
-- **React Router** for deep linking and navigation
-- **Apollo Client** for GraphQL data fetching
-- **Vitest** + **Testing Library** for testing
-
-### BFF (Backend-for-Frontend)
-- **Express** REST API
-- **Apollo Server** GraphQL endpoint
-- **Ajv** for JSON schema validation
-- **TypeScript** throughout
-- **Vitest** + **Supertest** for API testing
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18+ and npm
-
-### Install & Run
-
+1. Install dependencies:
 ```bash
-# Install dependencies
-cd bff && npm install
-cd ../frontend && npm install
-
-# Start BFF server (terminal 1)
-cd bff && npm run dev
-# → http://localhost:4000 (REST: /api, GraphQL: /graphql)
-
-# Start frontend dev server (terminal 2)
-cd frontend && npm run dev
-# → http://localhost:5173 (proxies /api and /graphql to BFF)
+npm install
 ```
 
-### Run Tests
-
+2. Start the development server:
 ```bash
-# BFF tests (36 tests)
-cd bff && npm test
-
-# Frontend tests (33 tests)
-cd frontend && npm test
+npm run dev
 ```
 
-## 📋 Coding Test Tasks (40 minutes)
+3. Open your browser to the URL shown in the terminal (usually `http://localhost:5173`)
 
-Complete as many tasks as possible. Each task evaluates specific competencies.
+### Running on StackBlitz
 
-### Task 1: Create Task Form Component (15 min)
-**Evaluates: React patterns, Fluent UI, TypeScript, form handling**
+**Option 1: Direct Import**
+1. Go to [StackBlitz](https://stackblitz.com/)
+2. Click "Import from GitHub"
+3. Enter this repository URL: `sahit402702/senior-react-bff-coding-test`
+4. StackBlitz will automatically set up and run the project
 
-Create a `CreateTaskForm` component in `frontend/src/components/CreateTaskForm.tsx`:
-- Use Fluent UI form components (`Input`, `Dropdown`, `Button`, `Field`)
-- Include fields: title, description, status (dropdown), priority (dropdown), assignee (dropdown)
-- Validate that title is not empty before submission
-- Call the `CREATE_TASK` GraphQL mutation on submit (mutation is already defined in `services/graphqlQueries.ts`)
-- Display success/error feedback using Fluent UI `MessageBar`
-- Add the form to the Tasks page with a "New Task" button that toggles the form visibility
+**Option 2: Share a Direct Link**
+You can share this direct link: `https://stackblitz.com/github/sahit402702/senior-react-bff-coding-test`
 
-**Bonus:** Add the component to the route `/tasks/new`
+**Option 3: Fork on StackBlitz**
+1. Open the project on StackBlitz using the link above
+2. Click "Fork" to create an editable copy
+3. Share your fork URL with candidates
 
-### Task 2: Add Task Filtering (10 min)
-**Evaluates: GraphQL, React state management, API consumption**
+## 📝 Test Overview
 
-Add filtering to the Tasks page (`frontend/src/pages/TasksPage.tsx`):
-- Add Fluent UI `Dropdown` controls for filtering by status and priority
-- The GraphQL `tasks` query already supports `status` and `priority` variables
-- Pass selected filter values as query variables to `useQuery`
-- Show "No tasks found" when filters return empty results
+This coding test evaluates candidates on:
 
-### Task 3: Add Delete Task Functionality (10 min)
-**Evaluates: Mutations, REST/GraphQL pragmatic choices, user confirmation**
+- **React Hooks**: useState, useEffect, custom hooks
+- **Component Architecture**: Building reusable components
+- **State Management**: Managing and updating component state
+- **Data Fetching**: API calls and handling async operations
+- **Event Handling**: User interactions and form handling
+- **Conditional Rendering**: Loading states, error handling
+- **Best Practices**: Code organization and React patterns
 
-Add delete functionality to the Task Detail page (`frontend/src/pages/TaskDetailPage.tsx`):
-- Add a Fluent UI `Button` with "Delete" label (appearance="subtle", icon: `Delete24Regular`)
-- Show a Fluent UI `Dialog` for confirmation before deleting
-- Use either the GraphQL `DELETE_TASK` mutation or the REST `api.deleteTask()` — make a pragmatic choice and be ready to justify it
-- Navigate to `/tasks` after successful deletion
-- Handle and display errors
+## 🎯 Tasks
 
-### Task 4: Write Tests (5 min)
-**Evaluates: Testing skills, test patterns**
+### Task 1: Counter Component
+Complete the basic counter with increment, decrement, and reset functionality.
 
-Write tests for the component(s) you created. Use the existing test patterns in `__tests__/`:
-- Test utilities in `testUtils.tsx` provide `renderWithProviders` with MockedProvider
-- Test rendering, user interactions, loading states, and error states
-- Aim for at least 3 meaningful test cases
+**Skills tested**: useState, event handling, conditional logic
 
-## 🔍 Evaluation Criteria
+### Task 2: Todo List Component
+Build a fully functional todo list with add, toggle, delete, and filter features.
 
-| Criteria | Weight | What We Look For |
-|----------|--------|------------------|
-| **React Patterns** | 25% | Hooks, component composition, state management |
-| **TypeScript** | 20% | Proper typing, interfaces, type safety |
-| **Fluent UI Usage** | 15% | Correct component selection, consistent styling |
-| **API Integration** | 15% | GraphQL queries/mutations, REST usage, error handling |
-| **Testing** | 15% | Meaningful tests, mocking, coverage |
-| **Code Quality** | 10% | Clean code, readability, patterns |
+**Skills tested**: Array state management, filtering, event handling
 
-## 📡 API Reference
+### Task 3: User Profile Component
+Fetch and display user data from an external API with proper loading and error states.
 
-### REST Endpoints (BFF)
+**Skills tested**: useEffect, data fetching, error handling, conditional rendering
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/users` | List all users |
-| GET | `/api/users/:id` | Get user with tasks & stats |
-| GET | `/api/tasks` | List tasks with assignees |
-| GET | `/api/tasks/:id` | Get single task |
-| POST | `/api/tasks` | Create task (JSON body) |
-| PATCH | `/api/tasks/:id` | Update task (partial JSON) |
-| DELETE | `/api/tasks/:id` | Delete task |
-| GET | `/api/dashboard` | Aggregated dashboard summary |
+### Bonus Task: Custom Hook
+Create a `useLocalStorage` custom hook for persisting state.
 
-### GraphQL Schema (BFF)
+**Skills tested**: Custom hooks, localStorage API, state persistence
 
-```graphql
-type Query {
-  users: [User!]!
-  user(id: ID!): User
-  tasks(status: TaskStatus, priority: TaskPriority): [Task!]!
-  task(id: ID!): Task
-  dashboard: DashboardSummary!
-}
+## ⏱️ Time Estimate
 
-type Mutation {
-  createTask(input: CreateTaskInput!): Task!
-  updateTask(id: ID!, input: UpdateTaskInput!): Task
-  deleteTask(id: ID!): Boolean!
-}
+- **Expected completion time**: 45-60 minutes
+- **Recommended approach**: Complete tasks in order
+- **Evaluation criteria**: Code quality, functionality, and React best practices
 
-enum TaskStatus { todo, in_progress, done }
-enum TaskPriority { low, medium, high }
+## 🔧 Project Structure
+
+```
+senior-react-bff-coding-test/
+├── index.html
+├── package.json
+├── vite.config.js
+└── src/
+    ├── main.jsx
+    ├── App.jsx
+    ├── App.css
+    ├── index.css
+    └── components/
+        ├── Counter.jsx
+        ├── TodoList.jsx
+        └── UserProfile.jsx
 ```
 
-### JSON Validation Schema
+## 📦 Tech Stack
 
-Task creation requires:
-```json
-{
-  "title": "string (1-200 chars, required)",
-  "description": "string (0-2000 chars, required)",
-  "status": "todo | in-progress | done (required)",
-  "priority": "low | medium | high (required)",
-  "assigneeId": "string (required)"
-}
-```
+- **React 18**: Latest React with hooks
+- **Vite**: Fast build tool and dev server
+- **CSS**: Styled with modern CSS (light/dark mode support)
 
-## 🔗 Deep Linking
+## 💡 For Evaluators
 
-The app supports deep linking to all views:
-- `/` — Dashboard
-- `/tasks` — Task list
-- `/tasks/:id` — Task detail
-- `/users` — User list
-- `/users/:id` — User detail
+### Reviewing Submissions
 
-## 📁 Key Files for Candidates
+1. Check if all tasks are completed
+2. Evaluate code quality and React patterns
+3. Test functionality in the browser
+4. Look for bonus implementations (custom hooks, additional features)
 
-| File | Purpose |
-|------|---------|
-| `frontend/src/services/graphqlQueries.ts` | All GraphQL queries & mutations |
-| `frontend/src/services/api.ts` | REST API client |
-| `frontend/src/types/index.ts` | Shared TypeScript types |
-| `frontend/src/__tests__/testUtils.tsx` | Test helper with providers |
-| `frontend/src/components/Badges.tsx` | Example Fluent UI component |
-| `frontend/src/pages/TasksPage.tsx` | Example page with GraphQL |
+### What to Look For
+
+- ✅ Proper use of React hooks
+- ✅ Clean, readable code
+- ✅ Correct state management
+- ✅ Error handling and edge cases
+- ✅ Good component structure
+- ✅ Following React best practices
+
+## 🤝 Contributing
+
+This is a coding test template. Feel free to fork and customize for your needs.
+
+## 📄 License
+
+MIT License - feel free to use this for your hiring process.

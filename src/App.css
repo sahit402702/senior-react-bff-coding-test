@@ -1,0 +1,142 @@
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.instructions {
+  text-align: left;
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.instructions h2 {
+  color: #646cff;
+  margin-top: 0;
+}
+
+.instructions ul {
+  text-align: left;
+  line-height: 2;
+}
+
+.instructions li {
+  margin: 1rem 0;
+}
+
+.instructions code {
+  background: #242424;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  color: #ff6b6b;
+}
+
+.task-section {
+  margin: 3rem 0;
+  padding: 2rem;
+  border: 2px dashed #646cff;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.task-section h3 {
+  color: #646cff;
+  margin-top: 0;
+}
+
+.task-section.incomplete {
+  opacity: 0.7;
+}
+
+.task-section.complete {
+  border-color: #4ade80;
+}
+
+.task-section.complete h3 {
+  color: #4ade80;
+}
+
+.hint {
+  background: rgba(100, 108, 255, 0.1);
+  padding: 1rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+  font-size: 0.9em;
+}
+
+.hint strong {
+  color: #646cff;
+}
+
+.demo-component {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(100, 108, 255, 0.05);
+  border-radius: 8px;
+}
+
+.counter-display {
+  font-size: 2rem;
+  margin: 1rem 0;
+  color: #646cff;
+  font-weight: bold;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem;
+  background: #1a1a1a;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+}
+
+.todo-item.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.todo-input {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 4px;
+  border: 1px solid #646cff;
+  background: #1a1a1a;
+  color: inherit;
+  font-size: 1em;
+  margin-bottom: 1rem;
+}
+
+@media (prefers-color-scheme: light) {
+  .instructions {
+    background: #f9f9f9;
+  }
+  
+  .instructions code {
+    background: #e9e9e9;
+  }
+  
+  .todo-item {
+    background: #f0f0f0;
+  }
+  
+  .todo-input {
+    background: white;
+  }
+}
