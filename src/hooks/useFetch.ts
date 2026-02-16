@@ -10,11 +10,7 @@ interface UseFetchResult<T> {
 /**
  * TASK 2a — Implement this custom hook.
  *
- * Requirements:
- *  - Accept `url` parameter
- *  - Return `{ data, loading, error }` with proper TypeScript generics
- *  - Handle loading, success, and error states
- *  - Clean up / ignore stale responses when URL changes (use AbortController or cleanup flag)
+ * Complete the useFetch hook by filling in the TODOs below.
  */
 
 export function useFetch<T>(url: string): UseFetchResult<T> {
@@ -22,7 +18,24 @@ export function useFetch<T>(url: string): UseFetchResult<T> {
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
 
-  // TODO: implement the useEffect that fetches data from `url`
+  useEffect(() => {
+    // TODO 1: Create an AbortController for cleanup
+    // const controller = new AbortController()
+
+    setLoading(true)
+    setError(null)
+
+    // TODO 2: Call fetch with url and pass controller.signal
+    // fetch(url, { signal: controller.signal })
+
+    // TODO 3: Handle the response
+    //   - Check if response.ok, if not throw error
+    //   - Parse JSON and set data
+    //   - Set loading to false
+    //   - Catch errors (ignore AbortError)
+
+    // TODO 4: Return cleanup function that calls controller.abort()
+  }, [url])
 
   return { data, loading, error }
 }
@@ -30,13 +43,23 @@ export function useFetch<T>(url: string): UseFetchResult<T> {
 /**
  * TASK 2b — Implement this custom hook.
  *
- * Requirements:
- *  - Accept `value` and `delay` (ms)
- *  - Return the debounced value
- *  - Clean up timeout on unmount or when value/delay changes
+ * Complete the useDebounce hook by filling in the TODOs below.
  */
 
 export function useDebounce<T>(value: T, delay: number): T {
-  // TODO: implement debounce logic
+  // TODO 1: Create state for debouncedValue, initialized with value
+  // const [debouncedValue, setDebouncedValue] = useState<T>(value)
+
+  useEffect(() => {
+    // TODO 2: Create a setTimeout that updates debouncedValue after delay
+    // const timer = setTimeout(() => {
+    //   setDebouncedValue(value)
+    // }, delay)
+
+    // TODO 3: Return cleanup function that clears the timeout
+    // return () => clearTimeout(timer)
+  }, [value, delay])
+
+  // TODO 4: Return the debouncedValue
   return value
 }

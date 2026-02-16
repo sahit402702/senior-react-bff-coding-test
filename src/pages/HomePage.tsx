@@ -12,14 +12,14 @@ export default function HomePage() {
       </div>
 
       <div className="task-card">
-        <h3>Task 1 — Fix useMemo / useEffect / Re-render Bugs (10 min)</h3>
+        <h3>Task 1 — Fix useMemo / useEffect / Re-render Bugs (15 min)</h3>
         <p>
           Open <code>src/components/ProductList.tsx</code>. The component has
-          <strong> three intentional bugs</strong>:
+          <strong> five intentional bugs</strong>:
         </p>
         <ul>
           <li>
-            <strong>Bug 1:</strong> Filtered-products computation runs on every render → Wrap with <code>useMemo</code>
+            <strong>Bug 1:</strong> Filtered products re-compute on every render → Wrap with <code>useMemo</code>
           </li>
           <li>
             <strong>Bug 2:</strong> <code>ProductCard</code> re-renders unnecessarily → Wrap with <code>React.memo</code>
@@ -27,9 +27,15 @@ export default function HomePage() {
           <li>
             <strong>Bug 3:</strong> <code>useEffect</code> fires on every render due to missing deps → Fix dependency array
           </li>
+          <li>
+            <strong>Bug 4:</strong> <code>handleSort</code> function recreated on every render → Use <code>useCallback</code>
+          </li>
+          <li>
+            <strong>Bug 5:</strong> Expensive <code>calculateFinalPrice</code> runs in child component → Memoize in parent
+          </li>
         </ul>
         <p style={{ marginTop: '0.8rem', fontSize: '0.9em', color: '#888' }}>
-          ✅ <strong>Success:</strong> After fixes, typing in search should NOT increase render counts on unchanged cards
+          ✅ <strong>Success:</strong> Render counts should stay at 1-2, console logs should minimize
         </p>
       </div>
 
@@ -39,15 +45,14 @@ export default function HomePage() {
       </div>
 
       <div className="task-card">
-        <h3>Task 2 — Custom Hooks &amp; Routing (15 min)</h3>
-        <p>Open <code>src/hooks/useFetch.ts</code> and implement two custom hooks:</p>
+        <h3>Task 2 — Custom Hooks &amp; Routing (12 min)</h3>
+        <p>Open <code>src/hooks/useFetch.ts</code> and complete the two custom hooks by following the TODO comments:</p>
         <ul>
           <li>
-            <strong>useFetch&lt;T&gt;(url):</strong> Generic data-fetching hook returning{' '}
-            <code>{'{ data, loading, error }'}</code>. Must handle cleanup when URL changes (use AbortController or cleanup flag)
+            <strong>useFetch&lt;T&gt;(url):</strong> Fill in the 4 TODOs to fetch data with AbortController cleanup
           </li>
           <li>
-            <strong>useDebounce&lt;T&gt;(value, delay):</strong> Returns debounced value with proper cleanup
+            <strong>useDebounce&lt;T&gt;(value, delay):</strong> Fill in the 4 TODOs to debounce value updates
           </li>
         </ul>
         <p style={{ marginTop: '0.8rem', fontSize: '0.9em', color: '#888' }}>
@@ -56,7 +61,7 @@ export default function HomePage() {
       </div>
 
       <div className="task-card">
-        <h3>Task 3 — Fix &amp; Complete Test Cases (10 min)</h3>
+        <h3>Task 3 — Fix &amp; Complete Test Cases (13 min)</h3>
         <p>
           Run <code>npm run test</code> — several tests are failing or incomplete. Fix them:
         </p>

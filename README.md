@@ -29,9 +29,9 @@ All tasks are visible on the **home page** (`/`) when you run the app.
 
 | Task | Focus | Time |
 |------|-------|------|
-| **1** | Fix `useMemo` / `React.memo` / `useEffect` bugs | ~10 min |
-| **2** | Implement `useFetch` & `useDebounce` custom hooks | ~15 min |
-| **3** | Fix & complete Vitest test cases | ~10 min |
+| **1** | Fix `useMemo` / `React.memo` / `useEffect` / `useCallback` bugs (5 bugs) | ~15 min |
+| **2** | Complete `useFetch` & `useDebounce` custom hooks (fill TODOs) | ~12 min |
+| **3** | Fix & complete Vitest test cases | ~13 min |
 
 ---
 
@@ -41,12 +41,14 @@ All tasks are visible on the **home page** (`/`) when you run the app.
 
 **File:** `src/components/ProductList.tsx`
 
-Fix 3 intentional bugs:
+Fix 5 intentional bugs:
 1. Filtered products re-compute on every render → wrap with `useMemo`
 2. `ProductCard` re-renders unnecessarily → wrap with `React.memo`
 3. `useEffect` fires on every render → fix dependency array
+4. `handleSort` function recreated on every render → use `useCallback`
+5. Expensive price calculation runs in child component → memoize in parent
 
-**Success:** Render counts on cards stay low when typing in search.
+**Success:** Render counts stay low, console logs minimize when typing.
 
 ---
 
@@ -54,9 +56,9 @@ Fix 3 intentional bugs:
 
 **File:** `src/hooks/useFetch.ts`
 
-Implement:
-- **`useFetch<T>(url)`** — Generic fetch hook with cleanup
-- **`useDebounce<T>(value, delay)`** — Debounce hook
+Complete the custom hooks by filling in the TODO comments:
+- **`useFetch<T>(url)`** — Fill in 4 TODOs to implement fetch with AbortController cleanup
+- **`useDebounce<T>(value, delay)`** — Fill in 4 TODOs to implement debouncing
 
 **Success:** Navigate to `/users` — the page loads user data and routing works.
 
