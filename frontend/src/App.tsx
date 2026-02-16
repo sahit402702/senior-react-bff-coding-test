@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, useLocation } from "react-router-dom";
+import { Sidebar } from "./components/Sidebar";
+import { Layout } from "./components/Layout";
+import { DashboardPage } from "./pages/DashboardPage";
+import { TasksPage } from "./pages/TasksPage";
+import { TaskDetailPage } from "./pages/TaskDetailPage";
+import { UsersPage } from "./pages/UsersPage";
+import { UserDetailPage } from "./pages/UserDetailPage";
 
-function App() {
-  const [count, setCount] = useState(0)
+const titleMap: Record<string, string> = {
+  "/": "Dashboard",
+  "/tasks": "Tasks",
+  "/users": "Users",
+};
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function getTitle(pathname: string): string {
+  if (pathname.startsWith("/tasks/")) return "Task Detail";
+  if (pathname.startsWith("/users/")) return "User Detail";
+  return titleMap[pathname] ?? "Task Manager";
 }
 
-export default App
+function App() {
+  const location = useLocation();
+  const title = getTitle(location.pathname);
+
+  return (
+    <Layout sidebar={<Sidebar />} title={title}>
+      <Routes>
+        <Route path="/" element={<DashboardPage />} />
+        <Route path="/tasks" element={<TasksPage />} />
+        <Route path="/tasks/:id" element={<TaskDetailPage />} />
+        <Route path="/users" element={<UsersPage />} />
+        <Route path="/users/:id" element={<UserDetailPage />} />
+      </Routes>
+    </Layout>
+  );
+}
+
+export default App;
