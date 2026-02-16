@@ -23,3 +23,8 @@ package-lock.json
 *.njsproj
 *.sln
 *.sw?
+
+# Solutions (for interviewer only - don't commit)
+SOLUTIONS.md
+TESTING_GUIDE.md
+.solutions/
