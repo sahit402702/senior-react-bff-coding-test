@@ -1,6 +1,6 @@
 # User Directory - React Test
 
-Build a user directory app with search functionality using React, TypeScript, and custom hooks.
+Build a user directory app using React, TypeScript, and custom hooks.
 
 ## Setup
 
@@ -19,7 +19,10 @@ npm run test       # Run tests
 
 ## Tasks
 
-### Task 1: API Service & Custom Hook
+### Task 1: Service & Hook
+
+**`src/types/User.ts`**
+- Define User interface with id, name, email, username, company
 
 **`src/services/userService.ts`**
 - Create `fetchUsers()` function using native fetch API
@@ -31,12 +34,7 @@ npm run test       # Run tests
 - Return `{ users, loading, error }`
 - Handle all states properly
 
-### Task 2: Components
-
-**`src/components/SearchBar.tsx`**
-- Controlled input component
-- Accept `value` and `onChange` props
-- Clean, accessible design
+### Task 2: Display Users
 
 **`src/components/UserItem.tsx`**
 - Display single user card
@@ -45,31 +43,23 @@ npm run test       # Run tests
 
 **`src/components/UserList.tsx`**
 - Display list of users using UserItem
-- Handle empty state
 - Use proper key props
-
-### Task 3: Main App Logic
 
 **`src/App.tsx`**
 - Use `useUsers()` hook to fetch data
-- Implement search with `useMemo` for filtering
-- Show loading/error/empty states
-- Integrate SearchBar and UserList
+- Show loading/error states
+- Display UserList with all users
 
-### Task 4: Tests
+### Task 3: Tests
 
 **`src/__tests__/App.test.tsx`**
 - Test loading state
 - Test successful user display
-- Test error handling
-- Test search filtering
 
 ## Requirements
 
 ✅ Functional components only
 ✅ Proper TypeScript types (no `any`)
-✅ Use `useMemo` for search filtering
-✅ Prevent unnecessary re-renders
 ✅ Clean code with comments
 ✅ Modular structure
 
@@ -81,7 +71,6 @@ src/
   ⚠️ services/userService.ts
   ⚠️ hooks/useUsers.ts
   ⚠️ components/
-      ⚠️ SearchBar.tsx
       ⚠️ UserItem.tsx
       ⚠️ UserList.tsx
   ⚠️ App.tsx

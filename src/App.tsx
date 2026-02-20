@@ -1,6 +1,4 @@
-import { useState, useMemo } from 'react'
 import { useUsers } from './hooks/useUsers'
-import SearchBar from './components/SearchBar'
 import UserList from './components/UserList'
 import Loader from './components/Loader'
 import ErrorMessage from './components/ErrorMessage'
@@ -9,46 +7,37 @@ import './App.css'
 /**
  * Main App Component
  * 
- * TODO: Implement the user directory with search functionality
+ * TODO: Implement the user directory
  * 
  * Requirements:
  * 1. Use useUsers() hook to fetch users
- * 2. Use useState for search query
- * 3. Use useMemo to filter users by search query (case-insensitive)
- * 4. Show loading state while fetching
- * 5. Show error state if fetch fails
- * 6. Show SearchBar and UserList when data loaded
- * 7. Filter users by name matching search query
+ * 2. Show loading state while fetching
+ * 3. Show error state if fetch fails
+ * 4. Show UserList when data loaded
  * 
- * useMemo example for filtering:
- * const filteredUsers = useMemo(() => {
- *   if (!searchQuery) return users
- *   return users.filter(user => 
- *     user.name.toLowerCase().includes(searchQuery.toLowerCase())
- *   )
- * }, [users, searchQuery])
+ * Example structure:
+ * const { users, loading, error } = useUsers()
  * 
- * This prevents unnecessary filtering on every render
+ * if (loading) return <Loader />
+ * if (error) return <ErrorMessage message={error} />
+ * 
+ * return <UserList users={users} />
  */
 
 export default function App() {
   // TODO: Get users, loading, error from useUsers hook
   
-  // TODO: Add state for search query
-  
-  // TODO: Use useMemo to filter users based on search query
-  
   // TODO: Handle loading state - show <Loader />
   
   // TODO: Handle error state - show <ErrorMessage message={error} />
   
-  // TODO: Render SearchBar and UserList with filtered users
+  // TODO: Display UserList with users
   
   return (
     <div className="app">
       <div className="container">
         <h1>User Directory</h1>
-        <p>TODO: Implement user directory with search</p>
+        <p>TODO: Implement user directory</p>
       </div>
     </div>
   )

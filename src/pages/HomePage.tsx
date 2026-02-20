@@ -17,25 +17,18 @@ export default function HomePage() {
           </div>
 
           <div className="task-card">
-            <h3>Task 2: Components</h3>
+            <h3>Task 2: Display Users</h3>
             <ul>
-              <li><strong>SearchBar.tsx</strong> - Controlled search input</li>
-              <li><strong>UserItem.tsx</strong> - Single user card</li>
-              <li><strong>UserList.tsx</strong> - List of users</li>
+              <li><strong>components/UserItem.tsx</strong> - Single user card component</li>
+              <li><strong>components/UserList.tsx</strong> - List of user cards</li>
+              <li><strong>App.tsx</strong> - Use useUsers hook, display UserList, handle loading/error states</li>
             </ul>
           </div>
 
           <div className="task-card">
-            <h3>Task 3: App Integration</h3>
+            <h3>Task 3: Tests</h3>
             <ul>
-              <li><strong>App.tsx</strong> - Use useUsers hook, implement search with useMemo, handle states</li>
-            </ul>
-          </div>
-
-          <div className="task-card">
-            <h3>Task 4: Tests</h3>
-            <ul>
-              <li><strong>App.test.tsx</strong> - Test loading, success, error, search filtering</li>
+              <li><strong>App.test.tsx</strong> - Test loading state and successful user display</li>
             </ul>
           </div>
         </div>
@@ -63,12 +56,10 @@ export default function HomePage() {
         <div className="test-section">
           <h2>✅ Requirements</h2>
           <ul style={{ fontSize: '0.95rem', lineHeight: '1.8' }}>
-            <li>Use <code>useMemo</code> for search filtering (case-insensitive)</li>
-            <li>Prevent unnecessary re-renders</li>
             <li>Proper TypeScript types (no <code>any</code>)</li>
             <li>Functional components only</li>
-            <li>Display: name, email, company name</li>
-            <li>Handle loading, error, and empty states</li>
+            <li>Display: name, email, company name for each user</li>
+            <li>Handle loading and error states</li>
             <li>Use native fetch API (no axios)</li>
           </ul>
         </div>
@@ -88,7 +79,6 @@ export default function HomePage() {
   ⚠️ services/userService.ts
   ⚠️ hooks/useUsers.ts
   ⚠️ components/
-      ⚠️ SearchBar.tsx
       ⚠️ UserItem.tsx
       ⚠️ UserList.tsx
   ⚠️ App.tsx
