@@ -1,28 +1,57 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import MealsPage from './pages/MealsPage'
-import MealDetailsPage from './pages/MealDetailsPage'
+import { useState, useMemo } from 'react'
+import { useUsers } from './hooks/useUsers'
+import SearchBar from './components/SearchBar'
+import UserList from './components/UserList'
+import Loader from './components/Loader'
+import ErrorMessage from './components/ErrorMessage'
 import './App.css'
 
 /**
- * Main App component with routing configuration.
+ * Main App Component
  * 
- * Routes:
- * 1. "/" - Shows test instructions
- * 2. "/meals" - Shows meals search and list (to be implemented)
- * 3. "/meals/:id" - Shows meal recipe details (to be implemented)
+ * TODO: Implement the user directory with search functionality
+ * 
+ * Requirements:
+ * 1. Use useUsers() hook to fetch users
+ * 2. Use useState for search query
+ * 3. Use useMemo to filter users by search query (case-insensitive)
+ * 4. Show loading state while fetching
+ * 5. Show error state if fetch fails
+ * 6. Show SearchBar and UserList when data loaded
+ * 7. Filter users by name matching search query
+ * 
+ * useMemo example for filtering:
+ * const filteredUsers = useMemo(() => {
+ *   if (!searchQuery) return users
+ *   return users.filter(user => 
+ *     user.name.toLowerCase().includes(searchQuery.toLowerCase())
+ *   )
+ * }, [users, searchQuery])
+ * 
+ * This prevents unnecessary filtering on every render
  */
+
 export default function App() {
+  // TODO: Get users, loading, error from useUsers hook
+  
+  // TODO: Add state for search query
+  
+  // TODO: Use useMemo to filter users based on search query
+  
+  // TODO: Handle loading state - show <Loader />
+  
+  // TODO: Handle error state - show <ErrorMessage message={error} />
+  
+  // TODO: Render SearchBar and UserList with filtered users
+  
   return (
-    <BrowserRouter>
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/meals" element={<MealsPage />} />
-          <Route path="/meals/:id" element={<MealDetailsPage />} />
-        </Routes>
+    <div className="app">
+      <div className="container">
+        <h1>User Directory</h1>
+        <p>TODO: Implement user directory with search</p>
       </div>
-    </BrowserRouter>
+    </div>
   )
 }
+
 

@@ -1,6 +1,6 @@
-# Recipe Finder - React Test
+# User Directory - React Test
 
-Build a recipe finder app using React, TypeScript, and custom hooks.
+Build a user directory app with search functionality using React, TypeScript, and custom hooks.
 
 ## Setup
 
@@ -12,61 +12,81 @@ npm run test       # Run tests
 
 ## API
 
-**TheMealDB API** (free, no key required)
+**JSONPlaceholder API** (free, no key required)
 
-- **Search:** `https://www.themealdb.com/api/json/v1/1/search.php?s=chicken`
-- **Get by ID:** `https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772`
-- **Response:** `{ meals: [...] }` or `{ meals: null }` if no results
+- **Get all users:** `https://jsonplaceholder.typicode.com/users`
+- **Response:** Array of user objects with id, name, email, company, etc.
 
 ## Tasks
 
-### Task 1: Custom Hooks
+### Task 1: API Service & Custom Hook
 
-**`src/hooks/useMeals.ts`**
-- Fetch meals by search query
-- Return `{ meals, loading, error }`
-- Handle null response (no results)
+**`src/services/userService.ts`**
+- Create `fetchUsers()` function using native fetch API
+- Return `Promise<User[]>`
+- Handle errors appropriately
 
-**`src/hooks/useMeal.ts`**
-- Fetch single meal by ID
-- Return `{ meal, loading, error }`
-- Re-fetch when ID changes
+**`src/hooks/useUsers.ts`**
+- Fetch users on mount
+- Return `{ users, loading, error }`
+- Handle all states properly
 
-### Task 2: Pages
+### Task 2: Components
 
-**`src/pages/MealsPage.tsx`**
-- Search form (controlled input)
-- Display meals grid with: image, name, category, area
-- Link each meal to `/meals/:id`
-- Handle empty results
+**`src/components/SearchBar.tsx`**
+- Controlled input component
+- Accept `value` and `onChange` props
+- Clean, accessible design
 
-**`src/pages/MealDetailsPage.tsx`**
-- Show meal: image, name, category, area, instructions
-- Extract & display ingredients (from strIngredient1-20, strMeasure1-20)
-- Add "Back to Meals" link
+**`src/components/UserItem.tsx`**
+- Display single user card
+- Show: name, email, company name
+- Clean layout
 
-### Task 3: Tests
+**`src/components/UserList.tsx`**
+- Display list of users using UserItem
+- Handle empty state
+- Use proper key props
 
-**`src/__tests__/MealsPage.test.tsx`**
+### Task 3: Main App Logic
+
+**`src/App.tsx`**
+- Use `useUsers()` hook to fetch data
+- Implement search with `useMemo` for filtering
+- Show loading/error/empty states
+- Integrate SearchBar and UserList
+
+### Task 4: Tests
+
+**`src/__tests__/App.test.tsx`**
 - Test loading state
-- Test successful fetch & display
+- Test successful user display
 - Test error handling
-- Test clickable links
+- Test search filtering
+
+## Requirements
+
+✅ Functional components only
+✅ Proper TypeScript types (no `any`)
+✅ Use `useMemo` for search filtering
+✅ Prevent unnecessary re-renders
+✅ Clean code with comments
+✅ Modular structure
 
 ## Files to Complete
 
 ```
-src/hooks/
-  ⚠️ useMeals.ts
-  ⚠️ useMeal.ts
-
-src/pages/
-  ⚠️ MealsPage.tsx
-  ⚠️ MealDetailsPage.tsx
-
-src/__tests__/
-  ⚠️ MealsPage.test.tsx
+src/
+  ⚠️ types/User.ts
+  ⚠️ services/userService.ts
+  ⚠️ hooks/useUsers.ts
+  ⚠️ components/
+      ⚠️ SearchBar.tsx
+      ⚠️ UserItem.tsx
+      ⚠️ UserList.tsx
+  ⚠️ App.tsx
+  ⚠️ __tests__/App.test.tsx
 ```
 
-**Start here:** Open `src/hooks/useMeals.ts` and follow the TODO comments.
+**Start here:** Open `src/types/User.ts` and define the User interface.
 
