@@ -5,33 +5,16 @@ import ErrorMessage from './components/ErrorMessage'
 import './App.css'
 
 /**
- * Main App Component
- * 
- * TODO: Implement the user directory
+ * TODO: Implement the main App component
  * 
  * Requirements:
  * 1. Use useUsers() hook to fetch users
- * 2. Show loading state while fetching
- * 3. Show error state if fetch fails
- * 4. Show UserList when data loaded
- * 
- * Example structure:
- * const { users, loading, error } = useUsers()
- * 
- * if (loading) return <Loader />
- * if (error) return <ErrorMessage message={error} />
- * 
- * return <UserList users={users} />
+ * 2. Handle loading, error, and success states
+ * 3. Display UserList with the fetched users
  */
 
 export default function App() {
-  // TODO: Get users, loading, error from useUsers hook
-  
-  // TODO: Handle loading state - show <Loader />
-  
-  // TODO: Handle error state - show <ErrorMessage message={error} />
-  
-  // TODO: Display UserList with users
+  // TODO: Implement
   
   return (
     <div className="app">

@@ -3,18 +3,12 @@ import { render, screen, waitFor } from '@testing-library/react'
 import App from '../App'
 
 /**
- * Tests for App component
+ * TODO: Complete the test cases
  * 
- * TODO: Complete the following tests:
- * 1. Mock the fetch API to return test users
- * 2. Verify loading state is displayed initially
- * 3. Verify users are displayed after loading
- * 4. Verify error message is displayed on fetch failure
- * 
- * Hints:
- * - Use vi.spyOn(global, 'fetch') to mock fetch
- * - Use waitFor() to wait for async updates
- * - Use screen.getByText() to find elements
+ * Tests to implement:
+ * 1. Loading state
+ * 2. Successful user display
+ * 3. Error handling
  */
 
 const mockUsers = [
